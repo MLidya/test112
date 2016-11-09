@@ -1,195 +1,199 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
-<!--<![endif]-->
-<!-- HEAD SECTION -->
+<html >
 <head>
-    <meta charset="utf-8" />
-   <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />-->
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-	 <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    
-    <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
-    <title>Imtiaz Mobile App</title>
-    <!--GOOGLE FONT -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <!--BOOTSTRAP MAIN STYLES -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!--FONTAWESOME MAIN STYLE -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
-    <!--SLIDESHOW STYLE -->
-    <link href="assets/css/style-slide.css" rel="stylesheet" />
-    <link href="assets/css/custom.css" rel="stylesheet" />
-    <!--CUSTOM STYLE -->
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+  <meta charset="UTF-8">
+  <title>Animated login form</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      body {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  background: url("assets/img/bodyLogForm.jpg") 50% fixed;
+  background-size: cover;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(359deg);
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  background: rgba(4, 40, 68, 0.85);
+}
+
+.login {
+  border-radius: 2px 2px 5px 5px;
+  padding: 10px 20px 20px 20px;
+  width: 90%;
+  max-width: 320px;
+  background: #ffffff;
+  position: relative;
+  padding-bottom: 80px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+.login.loading button {
+  max-height: 100%;
+  padding-top: 50px;
+}
+.login.loading button .spinner {
+  opacity: 1;
+  top: 40%;
+}
+.login.ok button {
+  background-color: #8bc34a;
+}
+.login.ok button .spinner {
+  border-radius: 0;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  height: 20px;
+  animation: none;
+  transform: rotateZ(-45deg);
+}
+.login input {
+  display: block;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  transition: border-width 0.2s ease;
+  border-radius: 2px;
+  color: #ccc;
+}
+.login input + i.fa {
+  color: #fff;
+  font-size: 1em;
+  position: absolute;
+  margin-top: -47px;
+  opacity: 0;
+  left: 0;
+  transition: all 0.1s ease-in;
+}
+.login input:focus {
+  outline: none;
+  color: #444;
+  border-color: #2196F3;
+  border-left-width: 35px;
+}
+.login input:focus + i.fa {
+  opacity: 1;
+  left: 30px;
+  transition: all 0.25s ease-out;
+}
+.login a {
+  font-size: 0.8em;
+  color: #2196F3;
+  text-decoration: none;
+}
+.login .title {
+  color: #444;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0 30px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+.login button {
+  width: 100%;
+  height: 100%;
+  padding: 10px 10px;
+  background: #2196F3;
+  color: #fff;
+  display: block;
+  border: none;
+  margin-top: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-height: 60px;
+  border: 0px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 2px 2px;
+  transform: rotateZ(0deg);
+  transition: all 0.1s ease-out;
+  border-bottom-width: 7px;
+}
+.login button .spinner {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  border: 4px solid #ffffff;
+  border-top-color: rgba(255, 255, 255, 0.3);
+  border-radius: 100%;
+  left: 50%;
+  top: 0;
+  opacity: 0;
+  margin-left: -20px;
+  margin-top: -20px;
+  animation: spinner 0.6s infinite linear;
+  transition: top 0.3s 0.3s ease, opacity 0.3s 0.3s ease, border-radius 0.3s ease;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+}
+.login:not(.loading) button:hover {
+  box-shadow: 0px 1px 3px #2196F3;
+}
+.login:not(.loading) button:focus {
+  border-bottom-width: 4px;
+}
+
+footer {
+  display: block;
+  padding-top: 50px;
+  text-align: center;
+  color: #ddd;
+  font-weight: normal;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+  font-size: 0.8em;
+}
+footer a, footer a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+    </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
 </head>
-    <!--END HEAD SECTION -->
-<body>   
-     <!-- NAV SECTION -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-				<!--Logo-->
-                <a class="navbar-brand" href="#"><img src="assets/img/logo.png" alt="Logo_Imtiaz" style="width: 100px;"/></a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#header-section">Accueil</a></li>
-                     <li><a href="#services-section">Profil</a></li>
-                    <li><a href="#pricing-section">Nos Services</a></li> 
-                    <li><a href="#contact-section">contactez nous</a></li>
-                    <li><a href="#offer"><i class="color-red"> Les bons Deals du mois</i></a></li>
-                </ul>
-            </div>
-           
-        </div>
-    </div>
-	
-     <!--END NAV SECTION -->
-     <!-- SLIDE SECTION -->
-	 
-       <div class="container" id="header-section">
-             <div class="row centered" >
-        <div class="demo-1">	
 
-            <div id="slider" class="sl-slider-wrapper">
+<body>
+  <div class="wrapper">
+  	<img src="assets/img/logo.png" alt="Logo_Imtiaz" style="width: 100px; margin-bottom: 10px;"/>
 
-				<div class="sl-slider">
-				
-					<div class="sl-slide bg-1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                        <div class="sl-slide-inner">
-                            <div class="deco" data-icon="1"></div>
-							<h2 class="color-white">ESMI </h2>
-							<blockquote><p class="color-white">Ecole superieur de management indus.</p><cite class="color-white" > -20% sur la formation continue </cite></blockquote> <br />
-						</div>
-					</div>
-					
-					<div class="sl-slide bg-2" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-						<div class="sl-slide-inner">
-                              <div class="deco" data-icon="2"></div>
-							<h2>AUC </h2>
-							<blockquote><p>Atlas Univers-City.</p><cite>-20% sur les formations</cite></blockquote> <br />
-						</div>
-					</div>
-					
-					<div class="sl-slide bg-3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-						<div class="sl-slide-inner">
-                              <div class="deco" data-icon="3"></div>
-							<h2>IAT Academy </h2>
-							<blockquote><p>International Airlines and Tourism Academy.</p><cite>-10% sur les frais de scolarité annuels</cite></blockquote> <br />
-						</div>
-					</div>
-					
-					<div class="sl-slide bg-4" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
-						<div class="sl-slide-inner">
-                              <div class="deco" data-icon="4"></div>
-							<h2>IPARM</h2>
-							<blockquote><p>Institut Paramedical des infermiers.</p><cite>-10% sur les frais de scolarité annuels</cite></blockquote>
-                            <br />
-						</div>
-					</div>
-					
-					<div class="sl-slide bg-5" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
-						<div class="sl-slide-inner">
-                              <div class="deco" data-icon="5"></div>
-							<h2>SUP MTI </h2>
-							<blockquote><p>SUP MTI</p><cite>-10% sur les diplômes</cite></blockquote> <br />
-						</div>
-					</div>
-				</div><!-- /sl-slider -->
-				
-				<nav id="nav-arrows" class="nav-arrows">
-					<span class="nav-arrow-prev">Previous</span>
-					<span class="nav-arrow-next">Next</span>
-				</nav>
-
-				<nav id="nav-dots" class="nav-dots">
-					<span class="nav-dot-current"></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</nav>
-
-			</div>
-
-        </div>
- </div>
-           </div>
-    <!--END SLIDE SECTION -->
-    <!--SPACE ADJUSTMENT SECTION -->
-      <div  id="space" >   
-            </div>
-    <!--END SPACE ADJUSTMENT SECTION -->
-     <!--WELCOME SECTION -->
-   
-          <!--END WELCOME SECTION -->
-
-    <!--ABOUT SECTION -->
-    <div id="about-section" >
-        
-    <!-- END ABOUT SECTION -->
-    <!-- SERVICES SECTION -->
-     <div id="services-section" >
-        <div class="container" >
-             <div class="row main-top-margin text-center" >
-                <div class="col-md-8 col-md-offset-2 ">
-                    <h1>Nos services</h1>
-					<a href="page_coursEnligne.html"><img src="assets/img/coursEnligne.png" style="width: 100px;"></a>
-					<a href="#"><img src="assets/img/sante.png" style="width: 80px;"></a>
-					<a href="#"><img src="assets/img/assurance.png" style="width: 80px;"></a>
-					<a href="#"><img src="assets/img/bibliotheque.jpg" style="width: 80px;"></a>
-					<a href="#"><img src="assets/img/cafe.png" style="width: 80px;"></a>
-					<a href="#"><img src="assets/img/logement.jpg" style="width: 80px;"></a>
-					
-					
-                    
-                </div>
-            </div>
-            
-            </div>
-         </div>
-    <!-- END SERVICES SECTION -->
-
-      <!--OFFER SECTION -->
-
-     <!--END OFFER SECTION -->
-   
-   
-   
-    <!--SOCIAL SECTION -->
-      <div class="text-center"  id="social" >
-               
-                    <h4 >Rejoinez Nous </h4>
-          
-                      <a href="#"><i class="fa fa-facebook-square fa-3x color-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter-square fa-3x color-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus-square fa-3x color-google-plus"></i></a>
-                        <a href="#"><i class="fa fa-linkedin-square fa-3x color-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-pinterest-square fa-3x color-pinterest"></i></a>
-               
-            </div>
-          <!--END SOCIAL SECTION -->
-    <!--FOOTER SECTION -->
-    <div id="footer">
+  <form class="login">
+  
+    <p class="title">Log in</p>
+    <input type="text" placeholder="Username" autofocus/>
+    <i class="fa fa-user"></i>
+    <input type="password" placeholder="Password" />
+    <i class="fa fa-key"></i>
+    <a href="#">Mot de passe oublié?</a>
+   <a href="index.html"><button>
+      <i class="spinner"></i>
+      <span class="state">Log in</span>
+    </button></a>
+  </form>
+  <footer>
+  <div id="footer">
         <div class="container">
             <div class="row ">
                 &copy; 2016 Saadia Nemmaoui | All Right Reserved |Imtiaz				
@@ -198,19 +202,13 @@
             
         </div>
        
-    </div>  
-    <!--END FOOTER SECTION --> 
-    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- CORE JQUERY LIBRARY -->
-    <script src="assets/js/jquery.js"></script>
-    <!-- CORE BOOTSTRAP LIBRARY -->
-    <script src="assets/js/bootstrap.min.js"></script>
-     <!-- SLIDESHOW LIBRARY -->
-     <script src="assets/js/modernizr.custom.79639.js"></script>
-    <script src="assets/js/jquery.ba-cond.min.js"></script>
-    <script src="assets/js/jquery.slitslider.js"></script>
-       <!-- CUSTOM SCRIPT-->   
-    <script src="assets/js/custom.js"></script>
-  
+    </div> 
+  </footer>
+  </p>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/indexLog.js"></script>
+
 </body>
 </html>
